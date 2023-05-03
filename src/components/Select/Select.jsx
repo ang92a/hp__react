@@ -11,7 +11,7 @@ export const Select = ({ array }) => {
   };
 
   const uniqHouse = [...getSelect(array)];
-  console.log(uniqHouse);
+
 
   return (
     <>
