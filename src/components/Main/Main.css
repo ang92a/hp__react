@@ -1,0 +1,10 @@
+.main__wrapper {
+    padding: 40px 0;
+}
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { Header } from "./components/Header/Header";
+import { Main } from "./components/Main/Main";
+import { data } from "./data/hp";
+import { Select } from "./components/Select/Select";
 
 function App() {
+
+
+
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header>
+        <div className="search__left">
+          <p className="search__text">Name</p>
+          <input className="search__input" type="text" placeholder="Name" />
+        </div>
+        <div className="select__right">
+          <p className="select__text">School</p>
+          <select id="select">
+            <option value="">Choose one</option>
+            <Select array={data} />
+          </select>
+        </div>
+      </Header>
+      <Main arr={data} />
+    </>
   );
 }
 
