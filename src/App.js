@@ -2,7 +2,6 @@ import "./index.css";
 import { Header } from "./components/Header/Header";
 import { Main } from "./components/Main/Main";
 import { data } from "./data/hp";
-import { Select } from "./components/Select/Select";
 import { useState } from "react";
 
 function App() {
@@ -22,25 +21,11 @@ function App() {
 
   return (
     <>
-      <Header>
-        <div className="search__left">
-          <p className="search__text">Name</p>
-          <input
-            className="search__input"
-            type="text"
-            placeholder="Name"
-            value={inputValue}
-            onChange={inputHandler}
-          />
-        </div>
-        <div className="select__right">
-          <p className="select__text">School</p>
-          <select id="select" onChange={selectHandler}>
-            <option value="">Choose one</option>
-            <Select array={data} />
-          </select>
-        </div>
-      </Header>
+      <Header
+        inputValue={inputValue}
+        inputHandler={inputHandler}
+        selectHandler={selectHandler}
+      />
       <Main arr={filteredData} />
     </>
   );
