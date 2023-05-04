@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hp_react/static/css/main.0ffecf35.css",
+    "main.js": "/hp_react/static/js/main.ff26cd73.js",
+    "index.html": "/hp_react/index.html",
+    "main.0ffecf35.css.map": "/hp_react/static/css/main.0ffecf35.css.map",
+    "main.ff26cd73.js.map": "/hp_react/static/js/main.ff26cd73.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0ffecf35.css",
+    "static/js/main.ff26cd73.js"
+  ]
+}
