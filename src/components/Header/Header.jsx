@@ -1,36 +1,25 @@
 import "./Header.css";
-import { data } from "../../data/hp";
-import { Select } from "../Select/Select";
+import { Input } from "../Input/Input";
 
-export const Header = ({ inputValue, inputHandler, selectHandler }) => {
+export const Header = ({
+  inputValue,
+  inputHandler,
+  selectHandler,
+  title,
+  subtitle,
+}) => {
   return (
     <header className="header header__wrapper">
       <div className="container">
         <div className="text">
-          <p className="text__title">Harry Potter</p>
-          <p className="text__subtitle">
-            View all characters from the Harry Potter universe
-          </p>
+          <p className="text__title">{title}</p>
+          <p className="text__subtitle">{subtitle}</p>
         </div>
-        <div className="header__search">
-          <div className="search__left">
-            <p className="search__text">Name</p>
-            <input
-              className="search__input"
-              type="text"
-              placeholder="Name"
-              value={inputValue}
-              onChange={inputHandler}
-            />
-          </div>
-          <div className="select__right">
-            <p className="select__text">School</p>
-            <select id="select" onChange={selectHandler}>
-              <option value="">Choose one</option>
-              <Select array={data} />
-            </select>
-          </div>
-        </div>
+        <Input
+          inputValue={inputValue}
+          inputHandler={inputHandler}
+          selectHandler={selectHandler}
+        />
       </div>
     </header>
   );
