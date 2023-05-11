@@ -1,9 +1,25 @@
-import React from "react";
 import "./Card.css";
+import empty from "./empty.svg";
+import full from "./full.svg";
 
-export const Card = ({ key, obj }) => {
+export const Card = ({ key, obj, liked, setLiked, like, dislike }) => {
   return (
     <article className="article" key={key}>
+      <div className="like">
+        <button
+          //при нажатии на кнопку, если в массиве локалсториж есть имя на которое лайкнули, то удалить его, если нет то добавить
+          onClick={() =>
+            liked.includes(obj.name) ? dislike(obj.name) : like(obj.name)
+          }
+        >
+          <img
+            className="like__img"
+            // отрисовка лайка на карточке, если в массиве есть имя, то сердце полное, если нет то пустое
+            src={liked.includes(obj.name) ? full : empty}
+            alt="like"
+          />
+        </button>
+      </div>
       <img className="article__img" src={obj.image} alt="imaage" />
       <div className="articleText__wrapper">
         <p className="article__name">{obj.name}</p>

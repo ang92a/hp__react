@@ -1,34 +1,41 @@
 import "./index.css";
-import { Header } from "./components/Header/Header";
-import { Main } from "./components/Main/Main";
-import { data } from "./data/hp";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Like } from "./pages/Like";
+import { Error } from "./pages/Error";
 import { useState } from "react";
 
+const savedLikes = JSON.parse(localStorage.getItem("likedCards")) ?? []; // если в локалсторедж есть данные в виде строки,
+// то они достаются и формируются в массив из обьектов, если ничего не введено, то возвращяется пустой массив
+let likeList = savedLikes; // присваиваем получившийся массив
+
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const inputHandler = (evt) => setInputValue(evt.target.value);
-  const inputCurrentValue = inputValue.trim().toLowerCase();
+  const [liked, setLiked] = useState(likeList); // состояние на кнопке лайк МАССИВ!!!
+  localStorage.setItem("likedNames", JSON.stringify(liked)); // добавляем лайки в локалсторидж МАССИВ
 
-  const [selectValue, setSelectValue] = useState("");
-  const selectHandler = (evt) => setSelectValue(evt.target.value);
-  const selectCurrentValue = selectValue.trim().toLowerCase();
 
-  const filteredData = data.filter(
-    (el) =>
-      el.name.trim().toLowerCase().includes(inputCurrentValue) &&
-      el.house.toLowerCase().includes(selectCurrentValue)
-  );
+  // функции при нажатии на кнопку лайк
+  const like = (name) => setLiked([...liked, name]);
+  const dislike = (name) => setLiked(liked.filter((elem) => elem !== name));
 
-  return (
-    <>
-      <Header
-        inputValue={inputValue}
-        inputHandler={inputHandler}
-        selectHandler={selectHandler}
-      />
-      <Main arr={filteredData} />
-    </>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Home liked={liked} setLiked={setLiked} like={like} dislike={dislike} />
+      ),
+    },
+    {
+      path: "*",
+      element: <Error />,
+    },
+    {
+      path: "like",
+      element: <Like liked={liked} />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
