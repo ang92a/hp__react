@@ -2,20 +2,21 @@ import "./Card.css";
 import empty from "./empty.svg";
 import full from "./full.svg";
 
-export const Card = ({ key, obj, liked, setLiked, like, dislike }) => {
+export const Card = ({ key, obj, liked, setLiked, like, dislike, allCards }) => {
+  console.log(allCards);
   return (
     <article className="article" key={key}>
       <div className="like">
         <button
           //при нажатии на кнопку, если в массиве локалсториж есть имя на которое лайкнули, то удалить его, если нет то добавить
           onClick={() =>
-            liked.includes(obj.name) ? dislike(obj.name) : like(obj.name)
+            allCards.includes(obj.name) ? like(obj.name) : dislike(obj.name)
           }
         >
           <img
             className="like__img"
             // отрисовка лайка на карточке, если в массиве есть имя, то сердце полное, если нет то пустое
-            src={liked.includes(obj.name) ? full : empty}
+            src={allCards.includes(obj.status == true) ? full : empty}
             alt="like"
           />
         </button>

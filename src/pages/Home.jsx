@@ -4,7 +4,15 @@ import { Main } from "../components/Main/Main";
 import { data } from "../data/hp";
 import { useState } from "react";
 
-export const Home = ({ liked, setLiked, like, dislike, title, subtitle }) => {
+export const Home = ({
+  liked,
+  setLiked,
+  like,
+  dislike,
+  title,
+  subtitle,
+  allCards,
+}) => {
   const [inputValue, setInputValue] = useState("");
   const inputHandler = (evt) => setInputValue(evt.target.value);
   const inputCurrentValue = inputValue.trim().toLowerCase();
@@ -33,6 +41,7 @@ export const Home = ({ liked, setLiked, like, dislike, title, subtitle }) => {
         setLiked={setLiked}
         like={like}
         dislike={dislike}
+        allCards={allCards}
       />
     </>
   );

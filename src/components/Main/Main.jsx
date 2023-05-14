@@ -3,13 +3,14 @@ import "./Main.css";
 import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
 
-export const Main = ({ arr, liked, setLiked, like, dislike }) => {
+export const Main = ({ arr, liked, setLiked, like, dislike, allCards }) => {
   return (
     <main className="main main__wrapper">
       <div className="container">
         <div className="cards">
           {arr.map((obj) => (
             <Card
+              allCards={allCards}
               key={obj.name}
               obj={obj}
               liked={liked}

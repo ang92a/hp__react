@@ -4,18 +4,34 @@ import { Home } from "./pages/Home";
 import { Like } from "./pages/Like";
 import { Error } from "./pages/Error";
 import { useState } from "react";
+import { data } from "./data/hp";
 
-const savedLikes = JSON.parse(localStorage.getItem("likedNames")) ?? []; // если в локалсторедж есть данные в виде строки,
+const savedLikes = JSON.parse(localStorage.getItem("Cards")) ?? []; // если в локалсторедж есть данные в виде строки,
 // то они достаются и формируются в массив из обьектов, если ничего не введено, то возвращяется пустой массив
-let likeList = savedLikes; // присваиваем получившийся массив
 
 function App() {
-  const [liked, setLiked] = useState(likeList); // состояние на кнопке лайк МАССИВ!!!
-  localStorage.setItem("likedNames", JSON.stringify(liked)); // добавляем лайки в локалсторидж МАССИВ
+  // для добавления статуса в массив
+  const [allCards, setAllCards] = useState(savedLikes);
+  // для состояния на кнопке лайк
+  const [liked, setLiked] = useState();
 
-  // функции при нажатии на кнопку лайк
-  const like = (name) => setLiked([...liked, name]);
-  const dislike = (name) => setLiked(liked.filter((elem) => elem !== name));
+  localStorage.setItem("Cards", JSON.stringify(allCards)); // добавляем лайки в локалсторидж МАССИВ
+
+  const like = (name) => {
+    setLiked(
+      allCards.map((item) =>
+        item.name === name ? { ...item, status: true } : item
+      )
+    );
+  };
+
+  const dislike = (name) => {
+    setLiked(
+      allCards.map((item) =>
+        item.name === name ? { ...item, status: false } : item
+      )
+    );
+  };
 
   const router = createBrowserRouter([
     {
