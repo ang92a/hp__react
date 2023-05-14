@@ -7,6 +7,7 @@ export const Header = ({
   selectHandler,
   title,
   subtitle,
+  style
 }) => {
   return (
     <header className="header header__wrapper">
@@ -16,6 +17,7 @@ export const Header = ({
           <p className="text__subtitle">{subtitle}</p>
         </div>
         <Input
+          style={style}
           inputValue={inputValue}
           inputHandler={inputHandler}
           selectHandler={selectHandler}

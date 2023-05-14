@@ -2,9 +2,9 @@ import React from "react";
 import { Select } from "../Select/Select";
 import { data } from "../../data/hp";
 
-export const Input = ({ inputValue, inputHandler, selectHandler }) => {
+export const Input = ({ inputValue, inputHandler, selectHandler, style }) => {
   return (
-    <div className="header__search">
+    <div className="header__search" style = {style}>
       <div className="search__left">
         <p className="search__text">Name</p>
         <input

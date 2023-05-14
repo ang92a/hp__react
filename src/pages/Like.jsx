@@ -11,11 +11,17 @@ export const Like = ({ liked, like, dislike, setLiked, title, subtitle }) => {
     <>
       <Link
         to={`/`}
-        style={{ marginTop: "50px", display: "block", fontSize: "24px" , marginLeft: "50px"}}
+        style={{
+          top: "50px",
+          display: "block",
+          fontSize: "24px",
+          left: "50px",
+          position: "fixed",
+        }}
       >
         ← Back To All
       </Link>
-      <Header title={title} subtitle={subtitle} />
+      <Header title={title} subtitle={subtitle} style={{ display: "none" }} />
       <Main
         arr={filteredData}
         liked={liked}
